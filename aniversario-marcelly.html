@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Marcelly!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgba(255, 204, 204, 0.8), rgba(255, 204, 204, 0.6)), url('https://images.unsplash.com/photo-1495573246075-4d15e8b258ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            padding: 60px 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #ff66b2;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+            font-family: 'Georgia', serif;
+            text-align: center;
+            border-bottom: 3px solid #ff66b2;
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .messages {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255, 102, 153, 0.7), rgba(255, 99, 71, 0.7));
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            font-family: 'Helvetica', sans-serif;
+            text-align: center;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            border-color: #ff66b2;
+        }
+
+        .card p {
+            font-weight: bold;
+        }
+
+        .footer {
+            padding: 40px 30px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            border-top: 5px solid #ff66b2;
+            position: relative;
+        }
+
+        .reveal-button {
+            background: radial-gradient(circle, #ff66b2, #ff99cc);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            text-shadow: 1px 1px 3px #000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, background-color 0.3s ease;
+        }
+
+        .reveal-button:hover {
+            transform: scale(1.1);
+            background-color: #ff3385;
+        }
+
+        #final-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff66b2;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s, transform 0.5s ease;
+        }
+
+        #final-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .interactive-message {
+            color: #ffdf00;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: color 0.4s ease;
+            text-decoration: underline;
+        }
+
+        .interactive-message:hover {
+            color: #ff66b2;
+            text-decoration: none;
+        }
+
+        /* Efeito de balões e corações subindo */
+        .balloon, .heart {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 5s infinite;
+        }
+
+        .balloon {
+            background-color: #ff66b2;
+            border-radius: 50%;
+            width: 50px;
+            height: 70px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .heart {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 0% 40%, 50% 100%, 100% 40%);
+            animation: heartFloat 4s infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-500px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-400px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-800px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos visuais -->
+    <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+    <div class="balloon" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="balloon" style="left: 60%; animation-delay: 2s;"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 3s;"></div>
+
+    <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 35%; animation-delay: 1s;"></div>
+    <div class="heart" style="left: 55%; animation-delay: 2s;"></div>
+    <div class="heart" style="left: 75%; animation-delay: 3s;"></div>
+
+    <div class="header">
+        <h1>🎉 Feliz Aniversário, Marcelly!💖</h1>
+        <p>Hoje é um dia especial, cheio de estilo e muita MODA! 💖</p>
+    </div>
+
+    <div class="messages">
+        <div class="card">
+            <p>Que seu dia seja tão FASHION quanto você! 🎈</p>
+        </div>
+        <div class="card">
+            <p>Best, que todos os seus sonhos se realizem neste novo ano, com muito ESTILO! 🌟</p>
+        </div>
+        <div class="card">
+            <p>Obrigado por sempre estar ao meu lado com tanto charme! ❤️</p>
+        </div>
+        <div class="card">
+            <p>Você merece tudo de bom nesse mundo e muito mais! 🌸</p>
+        </div>
+        <div class="card">
+            <p>Continue arrasando e inspirando pessoas com sua elegância! ☀️</p>
+        </div>
+        <div class="card">
+            <p>Você é a verdadeira definição de estilo e personalidade! 🎁</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="reveal-button" onclick="revealFinalMessage()">💌 Mensagem Final 💌</button>
+    </div>
+
+    <div class="interactive-message" onclick="showFashionMessage()">
+        Clique aqui para uma mensagem especial! ✨
+    </div>
+
+    <!-- Nova Mensagem Final -->
+    <div id="final-message">
+        🎉 Você é única e maravilhosa! Te desejo um futuro brilhante, cheio de sucesso, amor e muitas conquistas! Que seu estilo e sua criatividade iluminem o mundo para sempre! 💖
+    </div>
+
+    <script>
+        function revealFinalMessage() {
+            document.getElementById('final-message').classList.add('show');
+        }
+
+        function showFashionMessage() {
+            alert("Moda é a sua segunda pele, amor! Que você continue a inspirar o mundo com seu estilo único e criatividade sem limites! Aproveita bastante seu diaaaa ✨");
+        }
+    </script>
+</body>
+</html>
